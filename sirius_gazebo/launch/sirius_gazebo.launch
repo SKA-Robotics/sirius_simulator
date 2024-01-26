@@ -19,6 +19,7 @@
     <!-- <arg name="spherical_coordinates" default="[38.4190235, -110.7823884, 0.0]"/> -->
     <!-- <arg name="elevation" default="1378.0"/> -->
     <arg name="year" default=""/>
+    <arg name="declination" default="0.0"/>
     <arg name="localization" default="true"/>
     <arg name="gnss" default="true"/>
     
@@ -54,7 +55,7 @@
     </include>
     <node name="imu_align_north" pkg="sirius_navigation" type="imu_align_north.py" output="screen" >
         <remap from="imu/data" to="/imu_compensated/data"/>
-        <rosparam param="declination" subst_value="True">$(eval eval(spherical_coordinates)[2])</rosparam>
+        <rosparam param="declination" subst_value="True">$(arg declination)</rosparam>
     </node>
 
     <include file="$(find sirius_navigation)/launch/localization.launch" />
