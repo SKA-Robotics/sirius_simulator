@@ -92,6 +92,8 @@ private:
   std::string body_name;
   /// \brief Sensor update rate.
   double update_rate;
+  /// \brief Offset to correct for spawn origin.
+  ignition::math::Vector3d gazebo_origin;
 
   /// position_covariance
   double position_covariance[9];
