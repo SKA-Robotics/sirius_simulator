@@ -43,60 +43,60 @@ class GpsSensor;
 /// \brief Gazebo Ros gps sensor plugin.
 class GazeboRosGpsSensor : public SensorPlugin
 {
-public:
-  /// \brief Constructor.
-  GazeboRosGpsSensor();
+  public:
+    /// \brief Constructor.
+    GazeboRosGpsSensor();
 
-  /// \brief Destructor.
-  virtual ~GazeboRosGpsSensor();
+    /// \brief Destructor.
+    virtual ~GazeboRosGpsSensor();
 
-  /// \brief Load the sensor.
-  /// \param sensor_ shared pointer to the sensor.
-  /// \param sdf_ shared pointer to the sdf config file.
-  virtual void Load(sensors::SensorPtr sensor_, sdf::ElementPtr sdf_);
+    /// \brief Load the sensor.
+    /// \param sensor_ shared pointer to the sensor.
+    /// \param sdf_ shared pointer to the sdf config file.
+    virtual void Load(sensors::SensorPtr sensor_, sdf::ElementPtr sdf_);
 
-protected:
-  /// \brief Update the sensor.
-  virtual void UpdateChild(const gazebo::common::UpdateInfo& info);
+  protected:
+    /// \brief Update the sensor.
+    virtual void UpdateChild(const gazebo::common::UpdateInfo& info);
 
-private:
-  /// \brief Load the parameters from the sdf file.
-  bool LoadParameters();
+  private:
+    /// \brief Load the parameters from the sdf file.
+    bool LoadParameters();
 
-  /// \brief Ros NodeHandle pointer.
-  std::unique_ptr<ros::NodeHandle> node;
-  /// \brief Ros Publisher for gps pose data.
-  ros::Publisher gps_data_publisher;
-  /// \brief Ros Publisher for gps velocity data.
-  ros::Publisher gps_velocity_data_publisher;
-  /// \brief Gps message.
-  sensor_msgs::NavSatFix gps_msg;
-  /// \brief Velocity message.
-  geometry_msgs::Vector3Stamped gps_velocity_msg;
+    /// \brief Ros NodeHandle pointer.
+    std::unique_ptr<ros::NodeHandle> node;
+    /// \brief Ros Publisher for gps pose data.
+    ros::Publisher gps_data_publisher;
+    /// \brief Ros Publisher for gps velocity data.
+    ros::Publisher gps_velocity_data_publisher;
+    /// \brief Gps message.
+    sensor_msgs::NavSatFix gps_msg;
+    /// \brief Velocity message.
+    geometry_msgs::Vector3Stamped gps_velocity_msg;
 
-  /// \brief Last time on which the data was published.
-  common::Time last_time;
-  /// \brief Pointer to the update event connection.
-  gazebo::event::ConnectionPtr connection;
-  /// \brief Pointer to the sensor.
-  std::shared_ptr<sensors::GpsSensor> sensor;
-  /// \brief Pointer to the sdf config file.
-  sdf::ElementPtr sdf;
+    /// \brief Last time on which the data was published.
+    common::Time last_time;
+    /// \brief Pointer to the update event connection.
+    gazebo::event::ConnectionPtr connection;
+    /// \brief Pointer to the sensor.
+    std::shared_ptr<sensors::GpsSensor> sensor;
+    /// \brief Pointer to the sdf config file.
+    sdf::ElementPtr sdf;
 
-  // Loaded parameters
-  /// \brief The data is published on the topic named: /robot_namespace/topic_name.
-  std::string robot_namespace;
-  /// \brief The data is published on the topic named: /robot_namespace/topic_name.
-  std::string topic_name;
-  /// \brief Name of the link of the IMU.
-  std::string body_name;
-  /// \brief Sensor update rate.
-  double update_rate;
-  /// \brief Offset to correct for spawn origin.
-  ignition::math::Vector3d gazebo_origin;
+    // Loaded parameters
+    /// \brief The data is published on the topic named: /robot_namespace/topic_name.
+    std::string robot_namespace;
+    /// \brief The data is published on the topic named: /robot_namespace/topic_name.
+    std::string topic_name;
+    /// \brief Name of the link of the IMU.
+    std::string body_name;
+    /// \brief Sensor update rate.
+    double update_rate;
+    /// \brief Offset to correct for spawn origin.
+    ignition::math::Vector3d spherical_offset;
 
-  /// position_covariance
-  double position_covariance[9];
+    /// position_covariance
+    double position_covariance[9];
 };
 }  // namespace gazebo
 

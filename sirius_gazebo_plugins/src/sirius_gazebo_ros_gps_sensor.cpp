@@ -86,8 +86,8 @@ void GazeboRosGpsSensor::UpdateChild(const gazebo::common::UpdateInfo& /*_info*/
 
     if (gps_data_publisher.getNumSubscribers() > 0 || gps_velocity_data_publisher.getNumSubscribers() > 0)
     {
-        gps_msg.latitude = sensor->Latitude().Degree() + spherical_offset.X();
-        gps_msg.longitude = sensor->Longitude().Degree() + spherical_offset.Y();
+        gps_msg.latitude = sensor->Latitude().Degree() + this->spherical_offset.X();
+        gps_msg.longitude = sensor->Longitude().Degree() + this->spherical_offset.Y();
         gps_msg.altitude = sensor->Altitude();
         gps_velocity_msg.vector.x = sensor->VelocityEast();
         gps_velocity_msg.vector.y = sensor->VelocityNorth();
@@ -246,9 +246,9 @@ bool GazeboRosGpsSensor::LoadParameters()
                 world->SphericalCoords()->SetElevationReference(elevation);
                 ROS_INFO_STREAM("Elevation: " << elevation);
             }
-            
+
             if (sdf->HasElement("gazeboOrigin"))
-            {   
+            {
                 auto heading = world->SphericalCoords()->HeadingOffset();
                 world->SphericalCoords()->SetHeadingOffset(0);
                 auto gazebo_origin = sdf->GetElement("gazeboOrigin")->Get<ignition::math::Vector2d>();
@@ -266,7 +266,6 @@ bool GazeboRosGpsSensor::LoadParameters()
                 world->SphericalCoords()->SetHeadingOffset(M_PI - heading * M_PI / 180.0);
                 ROS_INFO_STREAM("Heading: " << heading);
             }
-
         }
     }
     return true;
