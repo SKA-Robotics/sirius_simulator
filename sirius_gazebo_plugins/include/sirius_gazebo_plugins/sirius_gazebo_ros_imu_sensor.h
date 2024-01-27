@@ -49,63 +49,63 @@ GazeboRosIMU are:
 /** @brief Gazebo Ros imu sensor plugin. */
 class GazeboRosImuSensor : public SensorPlugin
 {
-public:
-  /// \brief Constructor.
-  GazeboRosImuSensor();
-  /// \brief Destructor.
-  virtual ~GazeboRosImuSensor();
-  /// \brief Load the sensor.
-  /// \param sensor_ pointer to the sensor.
-  /// \param sdf_ pointer to the sdf config file.
-  virtual void Load(sensors::SensorPtr sensor_, sdf::ElementPtr sdf_);
+  public:
+    /// \brief Constructor.
+    GazeboRosImuSensor();
+    /// \brief Destructor.
+    virtual ~GazeboRosImuSensor();
+    /// \brief Load the sensor.
+    /// \param sensor_ pointer to the sensor.
+    /// \param sdf_ pointer to the sdf config file.
+    virtual void Load(sensors::SensorPtr sensor_, sdf::ElementPtr sdf_);
 
-protected:
-  /// \brief Update the sensor.
-  virtual void UpdateChild(const gazebo::common::UpdateInfo& /*_info*/);
+  protected:
+    /// \brief Update the sensor.
+    virtual void UpdateChild(const gazebo::common::UpdateInfo& /*_info*/);
 
-private:
-  /// \brief Load the parameters from the sdf file.
-  bool LoadParameters();
+  private:
+    /// \brief Load the parameters from the sdf file.
+    bool LoadParameters();
 
-  /// \brief Ros NodeHandle pointer.
-  ros::NodeHandle* node;
-  /// \brief Ros Publisher for imu data.
-  ros::Publisher imu_data_publisher;
-  /// \brief Ros IMU message.
-  sensor_msgs::Imu imu_msg;
+    /// \brief Ros NodeHandle pointer.
+    ros::NodeHandle* node;
+    /// \brief Ros Publisher for imu data.
+    ros::Publisher imu_data_publisher;
+    /// \brief Ros IMU message.
+    sensor_msgs::Imu imu_msg;
 
-  /// \brief last time on which the data was published.
-  common::Time last_time;
-  /// \brief Pointer to the update event connection.
-  gazebo::event::ConnectionPtr connection;
-  /// \brief Pointer to the sensor.
-  sensors::ImuSensor* sensor;
-  /// \brief Pointer to the sdf config file.
-  sdf::ElementPtr sdf;
-  /// \brief Orientation data from the sensor.
-  ignition::math::Quaterniond orientation;
-  /// \brief Diagonal of the orientation covariance matrix.
-  ignition::math::Vector3d orientation_variance;
-  /// \brief Linear acceleration data from the sensor.
-  ignition::math::Vector3d accelerometer_data;
-  /// \brief Diagonal of the linear acceleration covariance matrix.
-  ignition::math::Vector3d acceleration_variance;
-  /// \brief Angular velocity data from the sensor.
-  ignition::math::Vector3d gyroscope_data;
-  /// \brief Diagonal of the angular velocity covariance matrix.
-  ignition::math::Vector3d gyroscope_variance;
+    /// \brief last time on which the data was published.
+    common::Time last_time;
+    /// \brief Pointer to the update event connection.
+    gazebo::event::ConnectionPtr connection;
+    /// \brief Pointer to the sensor.
+    sensors::ImuSensor* sensor;
+    /// \brief Pointer to the sdf config file.
+    sdf::ElementPtr sdf;
+    /// \brief Orientation data from the sensor.
+    ignition::math::Quaterniond orientation;
+    /// \brief Diagonal of the orientation covariance matrix.
+    ignition::math::Vector3d orientation_variance;
+    /// \brief Linear acceleration data from the sensor.
+    ignition::math::Vector3d accelerometer_data;
+    /// \brief Diagonal of the linear acceleration covariance matrix.
+    ignition::math::Vector3d acceleration_variance;
+    /// \brief Angular velocity data from the sensor.
+    ignition::math::Vector3d gyroscope_data;
+    /// \brief Diagonal of the angular velocity covariance matrix.
+    ignition::math::Vector3d gyroscope_variance;
 
-  // loaded parameters
-  /// \brief The data is published on the topic named: /robot_namespace/topic_name.
-  std::string robot_namespace;
-  /// \brief The data is published on the topic named: /robot_namespace/topic_name.
-  std::string topic_name;
-  /// \brief Name of the link of the IMU.
-  std::string body_name;
-  /// \brief Sensor update rate.
-  double update_rate;
-  /// \brief Offset parameter, position part is unused.
-  ignition::math::Pose3d offset;
+    // loaded parameters
+    /// \brief The data is published on the topic named: /robot_namespace/topic_name.
+    std::string robot_namespace;
+    /// \brief The data is published on the topic named: /robot_namespace/topic_name.
+    std::string topic_name;
+    /// \brief Name of the link of the IMU.
+    std::string body_name;
+    /// \brief Sensor update rate.
+    double update_rate;
+    /// \brief Offset parameter, position part is unused.
+    ignition::math::Pose3d offset;
 };
 }  // namespace gazebo
 

@@ -47,49 +47,49 @@ class MagnetometerSensor;
 /** @brief Gazebo Ros magnetometer sensor plugin. */
 class GazeboRosMagnetometerSensor : public SensorPlugin
 {
-public:
-  /// \brief Constructor.
-  GazeboRosMagnetometerSensor();
-  /// \brief Destructor.
-  virtual ~GazeboRosMagnetometerSensor();
-  /// \brief Load the sensor.
-  /// \param sensor_ pointer to the sensor.
-  /// \param sdf_ pointer to the sdf config file.
-  virtual void Load(sensors::SensorPtr sensor_, sdf::ElementPtr sdf_);
+  public:
+    /// \brief Constructor.
+    GazeboRosMagnetometerSensor();
+    /// \brief Destructor.
+    virtual ~GazeboRosMagnetometerSensor();
+    /// \brief Load the sensor.
+    /// \param sensor_ pointer to the sensor.
+    /// \param sdf_ pointer to the sdf config file.
+    virtual void Load(sensors::SensorPtr sensor_, sdf::ElementPtr sdf_);
 
-protected:
-  /// \brief Update the sensor.
-  virtual void UpdateChild(const gazebo::common::UpdateInfo& /*_info*/);
+  protected:
+    /// \brief Update the sensor.
+    virtual void UpdateChild(const gazebo::common::UpdateInfo& /*_info*/);
 
-private:
-  /// \brief Load the parameters from the sdf file.
-  bool LoadParameters();
+  private:
+    /// \brief Load the parameters from the sdf file.
+    bool LoadParameters();
 
-  /// \brief Ros NodeHandle pointer.
-  std::unique_ptr<ros::NodeHandle> node;
-  /// \brief Ros Publisher for imu data.
-  ros::Publisher magnetometer_data_publisher;
-  /// \brief Ros IMU message.
-  sensor_msgs::MagneticField magnetometer_msg;
+    /// \brief Ros NodeHandle pointer.
+    std::unique_ptr<ros::NodeHandle> node;
+    /// \brief Ros Publisher for imu data.
+    ros::Publisher magnetometer_data_publisher;
+    /// \brief Ros IMU message.
+    sensor_msgs::MagneticField magnetometer_msg;
 
-  /// \brief last time on which the data was published.
-  common::Time last_time;
-  /// \brief Pointer to the update event connection.
-  gazebo::event::ConnectionPtr connection;
-  /// \brief Pointer to the sensor.
-  std::shared_ptr<sensors::MagnetometerSensor> sensor;
-  /// \brief Pointer to the sdf config file.
-  sdf::ElementPtr sdf;
+    /// \brief last time on which the data was published.
+    common::Time last_time;
+    /// \brief Pointer to the update event connection.
+    gazebo::event::ConnectionPtr connection;
+    /// \brief Pointer to the sensor.
+    std::shared_ptr<sensors::MagnetometerSensor> sensor;
+    /// \brief Pointer to the sdf config file.
+    sdf::ElementPtr sdf;
 
-  // loaded parameters
-  /// \brief The data is published on the topic named: /robot_namespace/topic_name.
-  std::string robot_namespace;
-  /// \brief The data is published on the topic named: /robot_namespace/topic_name.
-  std::string topic_name;
-  /// \brief Name of the link of the IMU.
-  std::string body_name;
-  /// \brief Sensor update rate.
-  double update_rate;
+    // loaded parameters
+    /// \brief The data is published on the topic named: /robot_namespace/topic_name.
+    std::string robot_namespace;
+    /// \brief The data is published on the topic named: /robot_namespace/topic_name.
+    std::string topic_name;
+    /// \brief Name of the link of the IMU.
+    std::string body_name;
+    /// \brief Sensor update rate.
+    double update_rate;
 };
 }  // namespace gazebo
 

@@ -55,138 +55,138 @@ namespace gazebo
 {
 class SiriusGazeboRosP3D : public ModelPlugin
 {
-  /// \brief Constructor
-public:
-  SiriusGazeboRosP3D();
+    /// \brief Constructor
+  public:
+    SiriusGazeboRosP3D();
 
-  /// \brief Destructor
-public:
-  virtual ~SiriusGazeboRosP3D();
+    /// \brief Destructor
+  public:
+    virtual ~SiriusGazeboRosP3D();
 
-  /// \brief Load the controller
-public:
-  void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf);
+    /// \brief Load the controller
+  public:
+    void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf);
 
-  /// \brief Update the controller
-protected:
-  virtual void UpdateChild();
+    /// \brief Update the controller
+  protected:
+    virtual void UpdateChild();
 
-private:
-  physics::WorldPtr world_;
+  private:
+    physics::WorldPtr world_;
 
-private:
-  physics::ModelPtr model_;
+  private:
+    physics::ModelPtr model_;
 
-  /// \brief The parent Model
-private:
-  physics::LinkPtr link_;
+    /// \brief The parent Model
+  private:
+    physics::LinkPtr link_;
 
-  /// \brief The body of the frame to display pose, twist
-private:
-  physics::LinkPtr reference_link_;
+    /// \brief The body of the frame to display pose, twist
+  private:
+    physics::LinkPtr reference_link_;
 
-  /// \brief pointer to ros node
-private:
-  ros::NodeHandle* rosnode_;
+    /// \brief pointer to ros node
+  private:
+    ros::NodeHandle* rosnode_;
 
-private:
-  ros::Publisher pub_;
+  private:
+    ros::Publisher pub_;
 
-private:
-  PubQueue<nav_msgs::Odometry>::Ptr pub_Queue;
+  private:
+    PubQueue<nav_msgs::Odometry>::Ptr pub_Queue;
 
-  /// \brief ros message
-private:
-  nav_msgs::Odometry pose_msg_;
+    /// \brief ros message
+  private:
+    nav_msgs::Odometry pose_msg_;
 
-  /// \brief store bodyname
-private:
-  std::string link_name_;
+    /// \brief store bodyname
+  private:
+    std::string link_name_;
 
-  /// \brief topic name
-private:
-  std::string topic_name_;
+    /// \brief topic name
+  private:
+    std::string topic_name_;
 
-  /// \brief frame transform name, should match link name
-  /// FIXME: extract link name directly?
-private:
-  std::string frame_name_;
+    /// \brief frame transform name, should match link name
+    /// FIXME: extract link name directly?
+  private:
+    std::string frame_name_;
 
-private:
-  std::string tf_frame_name_;
+  private:
+    std::string tf_frame_name_;
 
-  /// \brief allow specifying constant xyz and rpy offsets
-private:
-  ignition::math::Pose3d offset_;
+    /// \brief allow specifying constant xyz and rpy offsets
+  private:
+    ignition::math::Pose3d offset_;
 
-  /// \brief allow specifying constant xyz and rpy offsets for parent frame
-private:
-  ignition::math::Pose3d frame_offset_;
+    /// \brief allow specifying constant xyz and rpy offsets for parent frame
+  private:
+    ignition::math::Pose3d frame_offset_;
 
-  /// \brief mutex to lock access to fields used in message callbacks
-private:
-  boost::mutex lock;
+    /// \brief mutex to lock access to fields used in message callbacks
+  private:
+    boost::mutex lock;
 
-  /// \brief save last_time
-private:
-  common::Time last_time_;
+    /// \brief save last_time
+  private:
+    common::Time last_time_;
 
-private:
-  ignition::math::Vector3d last_vpos_;
+  private:
+    ignition::math::Vector3d last_vpos_;
 
-private:
-  ignition::math::Vector3d last_veul_;
+  private:
+    ignition::math::Vector3d last_veul_;
 
-private:
-  ignition::math::Vector3d apos_;
+  private:
+    ignition::math::Vector3d apos_;
 
-private:
-  ignition::math::Vector3d aeul_;
+  private:
+    ignition::math::Vector3d aeul_;
 
-private:
-  ignition::math::Vector3d last_frame_vpos_;
+  private:
+    ignition::math::Vector3d last_frame_vpos_;
 
-private:
-  ignition::math::Vector3d last_frame_veul_;
+  private:
+    ignition::math::Vector3d last_frame_veul_;
 
-private:
-  ignition::math::Vector3d frame_apos_;
+  private:
+    ignition::math::Vector3d frame_apos_;
 
-private:
-  ignition::math::Vector3d frame_aeul_;
+  private:
+    ignition::math::Vector3d frame_aeul_;
 
-  // rate control
-private:
-  double update_rate_;
+    // rate control
+  private:
+    double update_rate_;
 
-  /// \brief Gaussian noise
-private:
-  double gaussian_noise_;
+    /// \brief Gaussian noise
+  private:
+    double gaussian_noise_;
 
-  /// \brief Gaussian noise generator
-private:
-  double GaussianKernel(double mu, double sigma);
+    /// \brief Gaussian noise generator
+  private:
+    double GaussianKernel(double mu, double sigma);
 
-  /// \brief for setting ROS name space
-private:
-  std::string robot_namespace_;
+    /// \brief for setting ROS name space
+  private:
+    std::string robot_namespace_;
 
-private:
-  ros::CallbackQueue p3d_queue_;
+  private:
+    ros::CallbackQueue p3d_queue_;
 
-private:
-  void P3DQueueThread();
+  private:
+    void P3DQueueThread();
 
-private:
-  boost::thread callback_queue_thread_;
+  private:
+    boost::thread callback_queue_thread_;
 
-  // Pointer to the update event connection
-private:
-  event::ConnectionPtr update_connection_;
+    // Pointer to the update event connection
+  private:
+    event::ConnectionPtr update_connection_;
 
-  // ros publish multi queue, prevents publish() blocking
-private:
-  PubMultiQueue pmq;
+    // ros publish multi queue, prevents publish() blocking
+  private:
+    PubMultiQueue pmq;
 };
 }  // namespace gazebo
 #endif
