@@ -11,10 +11,10 @@
     <arg name="use_sim_time" default="true"/>
     <arg name="world_name" default="$(find leo_gazebo_worlds)/worlds/marsyard2022.world"/>
     <!-- Marsyard 2022 map origin offset -->
-    <arg name="gazebo_origin" default="[-9.39, 16.03]"/>
+    <arg name="gazebo_origin" default="[-9.396, 16.082]"/>
     <!-- ERC: Marsyard -->
-    <arg name="spherical_coordinates" default="[50.878151, 20.642273, 144.41]"/>
-    <arg name="elevation" default="308.1445"/>
+    <arg name="spherical_coordinates" default="[50.878009, 20.642403, 144.41]"/>
+    <arg name="elevation" default="308.145"/>
     <!-- URC: The Mars Desert Research Station  -->
     <!-- <arg name="spherical_coordinates" default="[38.4190235, -110.7823884, 0.0]"/> -->
     <!-- <arg name="elevation" default="1378.0"/> -->
