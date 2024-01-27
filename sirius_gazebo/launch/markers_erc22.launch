@@ -1,0 +1,124 @@
+<launch>
+    <!-- Coordinates of the marsyard2022 map origin in local ERC reference frame: X, Y, Heading (yaw in degrees) -->
+    <arg name="gazebo_origin" default="[17, -7.61, 0]"/>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="0"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="0"/>
+        <arg name="y" value="0"/>
+        <arg name="z" value="1.35"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="1"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="10"/>
+        <arg name="y" value="0"/>
+        <arg name="z" value="1.13"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="2"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="10"/>
+        <arg name="y" value="-10"/>
+        <arg name="z" value="0.87"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="3"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="28.35"/>
+        <arg name="y" value="-0.04"/>
+        <arg name="z" value="1.31"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="4"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="21.83"/>
+        <arg name="y" value="-2.8"/>
+        <arg name="z" value="1.12"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="5"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="18.71"/>
+        <arg name="y" value="-17.19"/>
+        <arg name="z" value="1.68"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="6"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="26.95"/>
+        <arg name="y" value="-7.44"/>
+        <arg name="z" value="1.33"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="7"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="15.97"/>
+        <arg name="y" value="7.57"/>
+        <arg name="z" value="1.07"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="8"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="17.87"/>
+        <arg name="y" value="-7.57"/>
+        <arg name="z" value="1.50"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="9"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="10"/>
+        <arg name="y" value="10"/>
+        <arg name="z" value="0.98"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="10"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="29.26"/>
+        <arg name="y" value="-14.52"/>
+        <arg name="z" value="1.54"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="11"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="18.41"/>
+        <arg name="y" value="-25.83"/>
+        <arg name="z" value="1.74"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="12"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="23.34"/>
+        <arg name="y" value="-14.11"/>
+        <arg name="z" value="2.02"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="13"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="8.18"/>
+        <arg name="y" value="-18.63"/>
+        <arg name="z" value="1.72"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+    <include file="$(find marker_description)/launch/marker_spawner.launch" >
+        <arg name="id" value="15"/>
+        <arg name="sides" default="4"/>
+        <arg name="x" value="2.27"/>
+        <arg name="y" value="-16.84"/>
+        <arg name="z" value="1.17"/>
+        <arg name="gazebo_origin" value="$(arg gazebo_origin)"/>
+    </include>
+</launch>

@@ -22,6 +22,7 @@
     <arg name="declination" default="0.0"/>
     <arg name="localization" default="true"/>
     <arg name="gnss" default="true"/>
+    <arg name="markers" default="erc22"/>
     <arg name="transforms" default="erc22"/>
     
     <param name="use_sim_time" command="$(arg use_sim_time)" />
@@ -44,6 +45,8 @@
    
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
         args="-z 1.592 -unpause -urdf -model robot -param robot_description" respawn="false" output="screen" />
+
+    <include file="$(find sirius_gazebo)/launch/markers_erc22.launch" if="$(eval markers == 'erc22')" />
 
     <include file="$(find sirius_control)/launch/controllers.launch" />
 
