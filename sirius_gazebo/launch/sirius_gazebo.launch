@@ -65,5 +65,7 @@
         <rosparam param="declination" subst_value="True">$(arg declination)</rosparam>
     </node>
 
-    <include file="$(find sirius_navigation)/launch/localization.launch" />
+    <include file="$(find sirius_navigation)/launch/localization.launch" >
+        <arg name="markers" value="$(eval bool(markers))"/>
+    </include>
 </launch>
