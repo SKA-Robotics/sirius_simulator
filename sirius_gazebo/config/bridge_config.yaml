@@ -1,0 +1,85 @@
+# Czas systemowy
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+
+# Odometria (Ground Truth)
+- ros_topic_name: "/ground_truth"
+  gz_topic_name: "ground_truth"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+# Transformacje TF
+- ros_topic_name: "/tf"
+  gz_topic_name: "/tf"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: GZ_TO_ROS
+
+# Kamera Lewa (Obraz) - cam0
+- ros_topic_name: "/front/left/image_raw"
+  gz_topic_name: "front/left/image_raw"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+# Kamera Lewa (Info)
+- ros_topic_name: "/front/left/camera_info"
+  gz_topic_name: "front/left/image_raw/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+# Kamera Prawa (Obraz) - cam1
+- ros_topic_name: "/front/right/image_raw"
+  gz_topic_name: "front/right/image_raw"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+# Kamera Prawa (Info)
+- ros_topic_name: "/front/right/camera_info"
+  gz_topic_name: "front/right/image_raw/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+# --- NOWE WPISY DLA KONFIGURACJI RGB-D I IMU ---
+
+# Kamera RGB (Obraz kolorowy z cam2)
+- ros_topic_name: "/front/rgb/image_raw"
+  gz_topic_name: "front/camera/image_raw"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+# Kamera RGB (Info)
+- ros_topic_name: "/front/rgb/camera_info"
+  gz_topic_name: "front/camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+# Kamera Depth (Głębia)
+- ros_topic_name: "/front/depth/image_raw"
+  gz_topic_name: "front/camera/depth_image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+# Chmura punktów (Pointcloud)
+- ros_topic_name: "/front/points"
+  gz_topic_name: "front/camera/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+# Sensor IMU
+- ros_topic_name: "/front/imu/data"
+  gz_topic_name: "front/imu/data"
+  ros_type_name: "sensor_msgs/msg/Imu"
+  gz_type_name: "gz.msgs.IMU"
+  direction: GZ_TO_ROS
